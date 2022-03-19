@@ -2,7 +2,7 @@
 # Simular o uso de um dado, gerando um valor de 1 a 6
 import random
 
-class SimuladorDoDado:
+class SimuladorDeDado:
     def __init__(self):
         self.valor_minimo = 1
         self.valor_maximo = 6
@@ -23,6 +23,6 @@ class SimuladorDoDado:
     def GerarValorDoDado(self):
         print(random.randint(self.valor_minimo,self.valor_maximo))
 
-simulador = SimuladorDoDado()
+simulador = SimuladorDeDado()
 simulador.Iniciar()
 
