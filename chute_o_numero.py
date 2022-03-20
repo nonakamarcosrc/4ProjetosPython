@@ -12,6 +12,7 @@ class ChuteONumero:
 
     def Iniciar(self):
         # Layout
+        sg.theme('Bluepurple')
         layout = [
             [sg.Text('Seu chute ', size=(39, 0))],
             [sg.Input(size=(18, 0), key='ValorChute')],
@@ -19,12 +20,12 @@ class ChuteONumero:
             [sg.Output(size=(39, 10))]
         ]
         # Criar janela
-        self.janela = sg.Window('Chute o número!', layout=layout)
+        self.janela = sg.Window('Chute o número!', layout)
         self.GerarNumeroAleatorio()
         try:
             while True:
                 # Receber valores
-                self.evento, self.valores = self.janela.Read()
+                self.evento, self.valores = self.janela.read()
                 # Fazer alguma coisa com valores
                 if self.evento == 'Chutar!':
                     self.valor_do_chute = self.valores['ValorChute']
@@ -37,12 +38,18 @@ class ChuteONumero:
                             self.numero_tentativa += 1
                             print('Chute um valor mais alto: ')
                             break
-                        if int(self.valor_do_chute) == self.valor_aleatorio:
+                        elif int(self.valor_do_chute) == self.valor_aleatorio:
                             self.tentar_novamente = False
                             print('Você acertou! ' + 'Número de tentativas', + (self.numero_tentativa))
+                            break
+                if self.evento == sg.WIN_CLOSED:
+                    break
+            self.janela.close()
+
         except:
             print('Favor digitar apenas números!')
             self.Iniciar()
+
 
     def GerarNumeroAleatorio(self):
         self.valor_aleatorio = random.randint(self.valor_minimo, self.valor_maximo)
