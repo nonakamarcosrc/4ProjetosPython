@@ -1,2 +1,2 @@
 # 8ProjetosPython
-Aulas de treinamento teste
+Projetos em Python utilizando PySimpleGUI e Radom
